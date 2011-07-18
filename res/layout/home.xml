@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/wicketball" >
+<!-- android:orientation ="vertical"-->
+  <TextView 
+  	android:id = "@+id/textwik"
+  	android:layout_width="wrap_content"
+  	android:layout_height ="wrap_content"
+  	android:layout_marginLeft = "20dp"
+  	android:layout_marginTop = "120dp"
+  	android:textSize = "20dp"
+  	android:textColor="#000000"
+  	android:text = "No. of Players"
+  	/>
+  	
+  <EditText 
+  	android:id = "@+id/editwik"
+  	android:layout_width="85dp"
+  	android:layout_height ="45dp"
+  	android:layout_below="@+id/textwik"
+  	android:layout_alignLeft="@+id/textwik"
+  	android:textSize = "20dp"
+  	android:textColor="#000000"
+  	android:maxLines ="1" />
+  
+  <TextView 
+  	android:id = "@+id/textovers"
+  	android:layout_width="wrap_content"
+  	android:layout_height ="wrap_content"
+  	android:layout_alignBottom="@+id/textwik"
+  	android:layout_marginRight = "20dp"
+  	android:layout_alignParentRight="true"
+  	android:textSize = "20dp"
+  	android:textColor="#000000"
+  	android:text = "No. overs"/>
+<!--  	android:layout_toRightOf="@+id/textwik"-->
+   <EditText 
+  	android:id = "@+id/editovers"
+  	android:layout_width="80dp"
+  	android:layout_height ="45dp"
+  	android:layout_below="@+id/textovers"
+  	android:layout_alignLeft="@+id/textovers"
+  	android:textSize = "20dp"
+  	android:textColor="#000000"
+  	android:maxLines ="1"/>
+  	
+  	
+  	<ImageButton
+  	android:id = "@+id/butlp"
+  	android:layout_width="100dp"
+  	android:layout_height ="45dp"
+  	android:layout_below = "@+id/editwik"
+  	android:layout_toRightOf="@+id/editwik"/>
+<!--  android:layout_below ="@+id/editovers"-->
+</RelativeLayout>
