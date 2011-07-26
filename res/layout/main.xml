@@ -133,22 +133,54 @@ android:layout_y="223px"
 <!-->-->
 <!--</Button>-->
 <Button
-android:id="@+id/bwck"
+android:id="@+id/bbwck"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text="Wicket Lost"
+android:text="Bowled"
 android:layout_x="11px"
 android:layout_y="339px"
 >
 </Button>
 
 <Button
+android:id="@+id/bcwck"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Caught"
+android:layout_x="85px"
+android:layout_y="339px"
+>
+</Button>
+
+<Button
+android:id="@+id/brwck"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Run Out"
+android:layout_x="155px"
+android:layout_y="339px"
+>
+</Button>
+
+
+<Button
+android:id="@+id/bswck"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Stumped"
+android:layout_x="232px"
+android:layout_y="339px"
+>
+</Button>
+
+
+<Button
 android:id="@+id/bext"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text="Extra Runs"
+android:text="Extras"
 android:layout_x="163px"
-android:layout_y="339px"
+android:layout_y="239px"
 >
 </Button>
 

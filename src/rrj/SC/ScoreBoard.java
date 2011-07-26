@@ -5,7 +5,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ParseException;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -15,12 +17,13 @@ import android.widget.Toast;
 public class ScoreBoard extends Activity implements OnClickListener {
     /** Called when the activity is first created. */
 	
-	Button bWkts,bRuns,bExt,b1,b2,b3,b4,b6,b0;
+	Button bWkts,bRuns,bExt,bcgt,brout,bstm, b1,b2,b3,b4,b6,b0;
 	TextView tRuns,tWkts,tOvers,tRr,targetRuns,targetWkts;
-	int total,extFlag,wck,balls,overs,totalOvers,teamSize,target;
+	int total,extFlag,wck,balls,overs,totalOvers,teamSize,target,rbout;
 	float runRate;
 	Boolean innings2;
 	String runs,over,rRate;
+	AlertDialog alert;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,8 +44,11 @@ public class ScoreBoard extends Activity implements OnClickListener {
         //b5 =(Button)findViewById(R.id.b5);
         b6 =(Button)findViewById(R.id.b6);
         b0 =(Button)findViewById(R.id.b0);
-        bWkts =(Button)findViewById(R.id.bwck);
+        bWkts =(Button)findViewById(R.id.bbwck);
         bExt =(Button)findViewById(R.id.bext);
+        bcgt =(Button)findViewById(R.id.bcwck);
+        brout =(Button)findViewById(R.id.brwck);
+        bstm=(Button)findViewById(R.id.bswck);
                
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
@@ -53,6 +59,10 @@ public class ScoreBoard extends Activity implements OnClickListener {
         b0.setOnClickListener(this);
         bWkts.setOnClickListener(this);
         bExt.setOnClickListener(this);
+        bWkts.setOnClickListener(this);
+        bcgt.setOnClickListener(this);
+        brout.setOnClickListener(this);
+        bstm.setOnClickListener(this);
         
         targetRuns.setEnabled(false);
         targetWkts.setEnabled(false);
@@ -94,20 +104,62 @@ public class ScoreBoard extends Activity implements OnClickListener {
 				//runs(0);
 				break;
 		
-			case(R.id.bwck): wck=wck+1;
-				String wkt = Integer.toString(wck);
-				tWkts.setText(wkt);
-				balls++;
-				over = +overs+"."+balls;
-				tOvers.setText(over);
+			case(R.id.bbwck): wickets();
 				break;
-		
+				
+			case(R.id.bcwck): wickets();
+				break;
+			
+			case(R.id.brwck): 
+				
+				final CharSequence[] items = {"0","1", "2", "3"};
+
+				AlertDialog.Builder runOut = new AlertDialog.Builder(this);
+				runOut.setTitle("Run Out");
+				runOut.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() 
+				{
+				    public void onClick(DialogInterface dialog, int item) 
+				    {
+				        Toast.makeText(getApplicationContext(), items[item].toString(), Toast.LENGTH_SHORT).show();
+				        String str= items[item].toString();
+				        rbout=  Integer.parseInt(str);
+				        runs(rbout);
+				    }
+				});
+				alert = runOut.create();
+				alert.show();
+				//alert.dismiss();
+				
+				wickets();
+				
+				
+				
+				
+				
+				break;
+			
+			case(R.id.bswck): wickets();
+				break;
+			
 		default: 
 			break;
 			
 		}
 	}
 	
+	
+
+
+	public void wickets()
+	{
+		
+		wck=wck+1;
+		String wkt = Integer.toString(wck);
+		tWkts.setText(wkt);
+		balls++;
+		over = +overs+"."+balls;
+		tOvers.setText(over);
+	}
 	public void runs(int run)
 	{
 		
@@ -123,7 +175,7 @@ public class ScoreBoard extends Activity implements OnClickListener {
 			balls++;
 			over = +overs+"."+balls;
 			tOvers.setText(over);
-			Toast toast = Toast.makeText(this, ""+balls, Toast.LENGTH_SHORT);
+			//Toast toast = Toast.makeText(this, ""+balls, Toast.LENGTH_SHORT);
 			//toast.show();
 			if(balls==6)
 			{
@@ -202,6 +254,7 @@ public class ScoreBoard extends Activity implements OnClickListener {
 				runRate = (total/overs);
 				rRate = ""+runRate;
 				tRr.setText(rRate);
+				alert.dismiss();
 				//Toast toast = Toast.makeText(this, ""+overs+"     "+total, Toast.LENGTH_SHORT);
 				//toast.show();
 			}
